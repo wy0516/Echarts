@@ -1,0 +1,103 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+    <script src="./echarts.min.js"></script>
+</head>
+
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 800px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var wy = this.echarts.init(document.getElementById("main"));
+    var option = {
+      title: {
+        text: "王勇的Echarts-scatter"
+      },
+      tooltip: {
+        trigger: "axis",
+        showDelay: 0, //延迟显示
+        axisPointer: {
+          //十字交叉坐标
+          type: "cross", //坐标指示器 可选:line|cross|shadow
+          lineStyle: {
+            type: "dashed", //显示的实现或者虚线
+            width: 1
+          }
+        }
+      },
+      legend: {
+        data: ["女性,男性"]
+      },
+      toolbox: {
+        show: true,
+        feature: {
+          marl: {
+            show: true
+          },
+          dataZoom: {
+            show: true
+          },
+          dataView: {
+            show: true
+          },
+          restore: {
+            show: true
+          },
+          saveAsImage: {
+            show: true
+          }
+        }
+      },
+      xAxis: [
+        {
+          type: "value",
+          precision: 2, //文本标签中数值的小数点精度。默认根据当前轴的值自动判断。也可以指定如2表示保存两位小数
+          scale: true, //是否脱离0值比例，设置成true后坐标刻度不会强制包含零刻度。在双数值轴的散点图中比较有用
+          name: "身高（cm）"
+        }
+      ],
+      yAxis: [
+        {
+          type: "value",
+          precision: 2,
+          scale: true,
+          name: "体重（km）"
+        }
+      ],
+      series: [
+        {
+          name: "女性",
+          type: "scatter",
+          data: [
+            [161.2, 51.6],
+            [144.9, 40.5],
+            [145.9, 42.5],
+            [161.9, 50.5],
+            [155.9, 55.5],
+            [135, 42.5],
+          ]
+        },
+        {
+          name: "男性",
+          type: "scatter",
+          data: [
+            [151.2, 51.6],
+            [155.9, 60.6],
+            [157.9, 62.6],
+            [175.9, 61.6],
+            [195.9, 63.6],
+            [185.9, 68.6],
+            [145.9, 70.6],
+          ]
+        }
+      ]
+    };
+    wy.setOption(option);
+    </script>
+</body>
+
+</html>
